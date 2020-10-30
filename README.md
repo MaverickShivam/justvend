@@ -1,4 +1,4 @@
-#JustVend: Smart Vending Machine
+# JustVend: Smart Vending Machine
 
 ![](images/Untitled.gif)
 
