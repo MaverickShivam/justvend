@@ -1,0 +1,230 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  width: 100%;
+  margin-bottom: 100px;
+}
+.header {
+  position: fixed;
+  height: 60px;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: 2000;
+  background-color: white;
+}
+.textbox {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 21px;
+  margin-top: -7px;
+
+  color: #77817d;
+}
+.home {
+  position: absolute;
+  height: 38px;
+  left: 40px;
+  top: 3px;
+  text-align: left;
+
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 38px;
+
+  color: #4d4545;
+}
+.location {
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  color: #4d4545;
+  font-size: 20px;
+}
+.bottom-menu {
+  background-color: white;
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  left: 0px;
+  bottom: 0;
+  box-shadow: 0px -1px 7px rgba(0, 0, 0, 0.1);
+  z-index: 2000;
+}
+.bottom-menu .option {
+  margin-top: 10px;
+  display: inline-block;
+  height: auto;
+  width: 23%;
+  text-align: center;
+  vertical-align: top;
+}
+.bottom-menu .option img {
+  width: 25px;
+}
+.top-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 60px;
+  z-index: 1;
+  left: 0;
+}
+.container {
+}
+.category-box {
+  border-radius: 8px;
+  margin: 7px;
+  text-align: left;
+  display: inline-block;
+  vertical-align: top;
+  width: 45%;
+  height: 150px;
+  position: relative;
+}
+.box1 {
+  background: rgba(237, 130, 52, 0.98);
+}
+.box1 .strip1 {
+  background: rgba(237, 97, 52, 0.98);
+}
+.box2 {
+  background-color: #fa5e78;
+}
+.box2 .strip2 {
+  background-color: #ee3f5c;
+}
+.category-title {
+  padding-top: 15px;
+  padding-left: 15px;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  color: #fffcfc;
+}
+.category-box .pic {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 120px;
+  height: auto;
+  z-index: 3;
+  border-bottom-right-radius: 8px;
+}
+.category-strip {
+  position: absolute;
+  bottom: 0;
+  height: 40px;
+  width: 100%;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  z-index: 2;
+}
+.category-arrow-right {
+  margin-left: 15px;
+  margin-top: 7px;
+}
+
+.catalogue {
+  margin-top: 5px;
+  text-align: left;
+  position: relative;
+  padding: 5px 0px;
+}
+.product-img {
+  max-width: 180px;
+  min-height: 120px;
+  text-align: center;
+  -webkit-filter: drop-shadow(5px 5px 5px rgba(49, 48, 48, 0.5));
+  filter: drop-shadow(5px 5px 5px rgba(49, 48, 48, 0.5));
+}
+.product-desc {
+  margin-top: 10px;
+  text-align: left;
+  background-color: white;
+}
+.product-desc-left {
+  display: inline-block;
+  width: calc(100% - 85px);
+  text-align: left;
+  margin-left: 5px;
+}
+.product-desc-right {
+  margin-top: 8px;
+  margin-left: 10px;
+  display: inline-block;
+  vertical-align: top;
+  text-align: right;
+}
+.product {
+  margin: 5px;
+  margin-left: 15px;
+  width: 180px;
+  display: inline-block;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
+}
+.product-img-container {
+  text-align: center;
+  height: 120px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 180px;
+  overflow: hidden;
+}
+.product-add-btn {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  background-color: #6c63ff;
+  color: white;
+  padding: 6px 20px 6px 20px;
+}
+.product-name {
+  width: calc(100% - 10px);
+  overflow: hidden;
+  margin-left: 5px;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  color: #222222;
+  height: 19px;
+}
+.product-quant {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  padding-top: 10px;
+  color: #77817d;
+}
+.product-price {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  color: #222222;
+}
+.color1 {
+  background-color: #fddb3a;
+}
+.color2 {
+  background-color: #8db596;
+}
+.color3 {
+  background-color: #a6b1e1;
+}
+.color4 {
+  background-color: #0d7377;
+}

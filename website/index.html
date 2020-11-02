@@ -1,0 +1,728 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,user-scalable=no">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<style>
+    @import 'https://fonts.googleapis.com/css?family=Pacifico|Roboto+Condensed';
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-family: 'Roboto Condensed', sans-serif;
+	background-color: #c7e2b2;
+	width: 100%;
+	height: 100%;
+	min-height: 770px;
+	position: relative;
+	margin:0;
+	padding:0;
+}
+
+.machine {
+	position: absolute;
+	top: 50px;
+	right:40px;
+	width: 330px;
+	height: 500px;
+	background-color: #0b0323;
+	border-radius: 10px;
+	perspective: 300px;
+}
+
+.machine:before {
+	position: absolute;
+	content: "";
+	z-index: -1;
+	border-radius: 3px;
+	background-color: #969696;
+	width: 30px;
+	height: 40px;
+	top: 150px;
+	right: 10px;
+}
+
+.machine:after {
+	position: absolute;
+	content: "";
+	z-index: -1;
+	border-radius: 3px;
+	background-color: #f3f623;
+	width: 26px;
+	height: 15px;
+	top: 152px;
+	right: 12px;
+}
+
+.glass {
+	width: 260px;
+	height: 400px;
+	overflow: hidden;
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	border-radius: 5px;
+	z-index: 5;
+}
+
+.glass:after {
+	position: absolute;
+	content: "";
+	top: -120px;
+	right: -420px;
+	width: 500px;
+	height: 600px;
+	transform: rotate(-20deg);
+
+}
+
+.inner {
+	width: 260px;
+	height: 400px;
+	background-color: #f4f6ff;
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.inner:before, .inner:after {
+	position: absolute;
+	content: "";
+	top: 0;
+	width: 50px;
+	height: 100%;
+	box-shadow: 0 0 100px 30px rgba(255, 230, 150, 0.9);
+	z-index: 2;
+}
+
+.inner:before {
+	left: -50px;
+	
+}
+
+.inner:after {
+	right: -50px;
+}
+
+
+.tray-inner {
+	width: 260px;
+	height: 50px;
+	background-color: black;
+	position: absolute;
+	left: 20px;
+	bottom: 20px;
+	border-radius: 5px;
+}
+
+.tray-inner .container {
+	position: absolute;
+	bottom: -7px;
+	left: 45%;
+	border-color: transparent !important;
+	z-index: 10;
+	animation: shake-can .25s .5s infinite;
+	transform-origin: center -100px;
+}
+
+.tray-inner .container .can {
+	transform: rotate(-20deg) scale(0.5, 0.5);
+	opacity: 0;
+	animation: show-can .5s .5s forwards;
+}
+
+.tray-inner .container.hide {
+	transition: all .5s;
+	opacity: 0;
+}
+
+@keyframes shake-can {
+	0%,
+  100% {
+		transform: rotate(0);
+	}
+
+	50% {
+		transform: rotate(10deg);
+	}
+}
+
+@keyframes show-can {
+	0% {
+		transform: rotate(-20deg) scale(0.5, 0.5);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateX(0) translateY(-100px) rotate(70deg) scale(10, 10);
+		opacity: 1;
+	}
+}
+
+.tray {
+	width: 260px;
+	height: 50px;
+	background-color: #b4b4b4;
+	position: absolute;
+	left: 20px;
+	bottom: 20px;
+	border-radius: 5px;
+	transform-origin: top center;
+	transform: rotateX(0deg);
+	transition: all 0.5s;
+	transition-timing-function: cubic-bezier(0.6, 0, 0.4, 1);
+}
+
+.tray.open {
+	transform: rotateX(-45deg);
+}
+
+.tray:after {
+	content: "push";
+	position: absolute;
+	top: 28px;
+	left: 0;
+	text-align: center;
+	width: 100%;
+	display: block;
+	opacity: .5;
+	color: black;
+	font-size: 12px;
+}
+
+.shelf {
+	display: block;
+	width: 100%;
+	border-bottom: 5px solid #282837;
+}
+
+.shelf:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.container {
+	float: left;
+	width: 52px;
+	height: 70px;
+	border-width: 0;
+	border-bottom-width: 15px;
+	border-style: solid;
+	position: relative;
+}
+
+.container .can-label {
+	position: absolute;
+	bottom: -15px;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	color: white;
+	line-height: 15px;
+	font-size: 10px;
+}
+
+.container .can {
+	position: absolute;
+	bottom: 0;
+	left: calc(50% - 12px);
+	width: 24px;
+	height: 40px;
+	border-radius: 3px;
+	font-family: 'Pacifico', cursive;
+	overflow: hidden;
+}
+
+.container .can:before {
+	position: absolute;
+	transform-origin: top left;
+	transform: rotate(-90deg);
+	top: 40px;
+	left: -2px;
+	width: 40px;
+	text-align: center;
+	color: white;
+	font-size: 8px;
+}
+
+.container .can:after {
+	position: absolute;
+	content: "";
+	right: 3px;
+	top: 3px;
+	width: 3px;
+	height: calc(100% - 6px);
+	background-color: rgba(255, 255, 255, 0.25);
+	border-radius: 3px;
+}
+
+.arm {
+	position: absolute;
+	top: 390px;
+	left: 0;
+	width: 100%;
+	height: 8px;
+	background-color: #c8c8c8;
+	z-index: 1;
+	transition-timing-function: linear;
+}
+
+.arm:after, .arm:before {
+	position: absolute;
+	content: "";
+	width: 5px;
+	height: 28px;
+	top: -9px;
+	left: 0;
+	background-color: #a0a0a0;
+}
+
+.arm:after {
+	left: auto;
+	right: 0;
+}
+
+.arm .hand {
+	position: absolute;
+	top: -5px;
+	left: 200px;
+	width: 40px;
+	height: 20px;
+	border-radius: 4px;
+	background-color: #a0a0a0;
+	transition-timing-function: linear;
+}
+
+.arm .hand:before, .arm .hand:after {
+	position: absolute;
+	content: "";
+	width: 6px;
+	height: 30px;
+	top: -5px;
+	border-radius: 2px;
+	background-color: #32373c;
+	z-index: -1;
+}
+
+.arm .hand:before {
+	left: 4px;
+}
+
+.arm .hand:after {
+	right: 4px;
+}
+
+.arm .hand .container {
+	position: absolute;
+	top: -27px;
+	left: -5px;
+	z-index: -2;
+	border-color: transparent !important;
+}
+
+
+
+
+[data-can="1"] {
+	border-color: #ff3539;
+}
+
+[data-can="1"] .can {
+	background-color: #FF8A5B;
+}
+
+[data-can="1"] .can:before {
+	content: "chips";
+}
+
+[data-can="2"] {
+	border-color: #ff6628;
+}
+
+[data-can="2"] .can {
+	background-color: #FF686B;
+}
+
+[data-can="2"] .can:before {
+	content: "JustVend";
+}
+
+[data-can="3"] {
+	border-color: #8c8c8c;
+}
+
+[data-can="3"] .can {
+	background-color: #b4b4c8;
+}
+
+[data-can="3"] .can:before {
+	content: "juice";
+}
+
+[data-can="4"] {
+	border-color: #783c50;
+}
+
+[data-can="4"] .can {
+	background-color: #501e32;
+}
+
+[data-can="4"] .can:before {
+	content: "snacks";
+}
+
+[data-can="5"] {
+	border-color: #5cd1b4;
+}
+
+[data-can="5"] .can {
+	background-color: #184d47;
+}
+
+[data-can="5"] .can:before {
+	content: "chocolate";
+}
+
+a {
+	font-family: "Pacifico";
+	text-decoration: none;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	color: white;
+	padding: 20px;
+	font-size: 22px;
+	opacity: .25;
+	transition: all .2s;
+}
+
+a:hover {
+	opacity: 1;
+}
+</style>
+
+
+
+
+
+
+
+<body>
+<div class="machine">
+	<div class="inner">
+		<div class="arm">
+			<div class="hand"></div>
+		</div>
+		
+		<div class="shelf" data-shelf="A">
+			<div class="container" data-can="1">
+				<div class="can"></div>
+			</div>
+			<div class="container" data-can="2">
+				<div class="can"></div>
+			</div>
+			<div class="container" data-can="3">
+				<div class="can"></div>
+			</div>
+			<div class="container" data-can="4">
+				<div class="can"></div>
+			</div>
+			<div class="container" data-can="5">
+				<div class="can"></div>
+			</div>
+		</div>
+		
+		<div class="shelf" data-shelf="B">
+			<div class="container" data-can="1">
+				<div class="can"></div>
+			</div>
+			<div class="container" data-can="2">
+				<div class="can"></div>
+			</div>
+			<div class="container" data-can="3">
+				<div class="can"></div>
+			</div>
+			<div class="container" data-can="4">
+				<div class="can"></div>
+			</div>
+			<div class="container" data-can="5">
+				<div class="can"></div>
+			</div>
+		</div>
+		
+		<div class="shelf" data-shelf="C">
+			<div class="container" data-can="1">
+				<div class="can"></div>
+			</div>
+			<div class="container" data-can="2">
+				<div class="can"></div>
+			</div>
+			<div class="container" data-can="3">
+				<div class="can"></div>
+			</div>
+			<div class="container" data-can="4">
+				<div class="can"></div>
+			</div>
+			<div class="container" data-can="5">
+				<div class="can"></div>
+			</div>
+		</div>
+		
+		<div class="shelf" data-shelf="D">
+			<div class="container" data-can="1">
+				<div class="can"></div>
+			</div>
+			<div class="container" data-can="2">
+				<div class="can"></div>
+			</div>
+			<div class="container" data-can="3">
+				<div class="can"></div>
+			</div>
+			<div class="container" data-can="4">
+				<div class="can"></div>
+			</div>
+			<div class="container" data-can="5">
+				<div class="can"></div>
+			</div>
+		</div>
+		
+		<div class="shelf" data-shelf="E">
+			<div class="container" data-can="1">
+				<div class="can"></div>
+			</div>
+			<div class="container" data-can="2">
+				<div class="can"></div>
+			</div>
+			<div class="container" data-can="3">
+				<div class="can"></div>
+			</div>
+			<div class="container" data-can="4">
+				<div class="can"></div>
+			</div>
+			<div class="container" data-can="5">
+				<div class="can"></div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="glass">
+	</div>
+	
+	<div class="tray-inner">
+	</div>
+	
+	<div class="tray">
+	</div>
+	
+	<!--<div class="numberpad">
+	</div>-->
+</div>
+
+<!--<div class="numpad">
+	<div class="current-input"></div>
+</div>-->
+
+ 
+ 
+ 
+<script>
+    class VendingMachine{
+	constructor(){
+		//this.setupLabels();
+		//this.setInitialDisabled();
+		//this.bindEventListeners();
+		
+		this.scene = {
+			letter: 'C',
+			number: '2'
+		};
+		this.validate();
+	}
+	
+	setupLabels(){
+		$('[data-shelf]').each((i, el)=>{
+			var letter = $(el).data('shelf');
+			
+			this.addNumpad(letter, 'letter');
+			
+			$('[data-can]', el).each((j, el2)=>{
+				var number = $(el2).data('can');
+				
+				$(el2).append('<div class="can-label">' + letter + number + '</div>');
+			});
+		});
+		
+		for(var i = 1; i < 6; i++){
+			this.addNumpad(i, 'number');
+		}
+	}
+	
+	bindEventListeners(){
+		$('[data-label]').on('click', (e)=>{
+			if(!$(e.currentTarget).hasClass('disabled')){
+				var val = $(e.currentTarget).data('label');
+				var type = $(e.currentTarget).data('type');
+
+				this.addVal(val, type);
+			}
+		});
+	}
+	
+	addNumpad(label, type){
+		$('.numpad').append('<button data-label="' + label + '" data-type="' + type + '">' + label + '</button>');
+	}
+	
+	setInitialDisabled(){
+		$('[data-type="letter"]').removeClass('disabled');
+		$('[data-type="number"]').addClass('disabled');
+	}
+	
+	disableAll(){
+		$('[data-type]').addClass('disabled');
+	}
+	
+	resetVals(){
+		this.scene.letter = '';
+		this.scene.number = '';
+		
+		this.showVal();
+	}
+	
+	addVal(val, type){
+		if(type === 'letter'){
+			this.scene.letter = val;
+			this.scene.number = '';
+		} else {
+			this.scene.number = val;
+		}
+		
+		this.validate();
+	}
+	
+	validate(){
+		if(this.scene.letter.length){
+			$('[data-type="number"]').removeClass('disabled');
+		}
+		
+		if(this.scene.number){
+			$('[data-type="number"]').addClass('disabled');
+			this.getBeverage();
+		}
+		
+		this.showVal();
+	}
+	
+	showVal(){
+		$('.current-input').text(this.scene.letter + this.scene.number);
+	}
+	
+	getBeverage(){
+		console.log('getting drink : ' + this.scene.letter + this.scene.number);
+		this.disableAll();
+		
+		this.getPosition();
+	}
+	
+	getPosition(){
+		var el = $('[data-shelf="' + this.scene.letter + '"] [data-can="' + this.scene.number + '"]');
+		
+		var x = el[0].offsetLeft;
+		var y = el[0].offsetTop;
+		
+		this.setPosition(x, y, ()=>{
+			// Getting the product
+			
+			this.appendTheCan();
+			
+			this.setPosition(110, 420, ()=>{
+				// Dropping the product
+				
+				this.dropTheCan();
+				
+				this.showCan();
+				
+				this.setPosition(195, 345, ()=>{
+					// Reset to starting position
+					this.setInitialDisabled();
+					this.resetVals();
+				});
+			});
+		});
+	}
+	
+	showCan(){
+		$('.tray-inner').append('<div class="container" data-can="' + this.scene.number + '"><div class="can"></div></div>');
+		
+		$('.tray').addClass('open');
+		
+		setTimeout(()=>{
+			$('.tray').removeClass('open');
+			$('.tray-inner [data-can]').addClass('hide');
+			
+			setTimeout(function(){
+				$('.tray-inner [data-can]').remove();
+				new VendingMachine();
+			    //after one scene
+			}, 150);
+		}, 2500);
+	}
+	
+	appendTheCan(){
+		$('.hand').append('<div class="container" data-can="' + this.scene.number + '"><div class="can"></div></div>');
+	}
+	
+	dropTheCan(){
+		$('.hand [data-can]').remove();
+	}
+	
+	setPosition(x, y, callback){
+		$('.hand').on('transitionend', ()=>{
+			
+			$('.hand').off('transitionend');
+			
+			setTimeout(function(){
+				callback();
+			}, 500);
+			
+		});
+		
+		this.calculateVelocity(x, y, (velX, velY)=>{
+			$('.arm').css({
+				'top': (y + 35) + 'px',
+				'transition-duration': velY + 's'
+			});
+
+			$('.hand').css({
+				'left': (x + 5) + 'px',
+				'transition-duration': velX + 's',
+				'transition-delay': velY + 's'
+			});
+		});
+	}
+	
+	calculateVelocity(x, y, callback){
+		var currentX = $('.hand')[0].offsetLeft;
+		var currentY = $('.arm')[0].offsetTop;
+		
+		var velX = Math.ceil((Math.max(currentX, x) - Math.min(currentX, x)) / 380);
+		var velY = Math.ceil((Math.max(currentY, y) - Math.min(currentY, y)) / 380);
+		
+		callback(velX, velY);
+	}
+}
+
+new VendingMachine();
+
+
+</script>       
+</body>
+</html>
