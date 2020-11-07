@@ -3,16 +3,15 @@ import React from "react";
 
 import Button from "@material-ui/core/Button";
 
-function Myitems(props) {
-    console.log(props.pdetails.length)
+function Wideitems(props) {
   return(
-      <div className="catalogue" style={{width:props.pdetails.length*200+20}}>
-        {props.pdetails.map(product=>(
-            <div className="product" key={product.pid}>
-                <div className={'product-img-container '+ props.pcolor} >
-                    <img src={product.pimage} alt="Snacks" className="product-img" />
+      <div className="wide-catalogue">
+        {props.items.map(product=>(
+            <div className="wide-product" key={product.pid}>
+                <div className={'wide-product-img-container color6'} >
+                    <img src={product.pimage} alt="Snacks" className="wide-product-img" />
                 </div>
-                <div className="product-desc">
+                <div className="wide-product-desc">
                     <div className="product-name">
                         {product.pname}
                     </div>
@@ -45,4 +44,4 @@ function Myitems(props) {
   );
 
 }
-export default Myitems;
+export default Wideitems;
