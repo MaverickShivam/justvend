@@ -4,7 +4,7 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 
 function Myitems(props) {
-    console.log(props.pdetails.length)
+    
   return(
       <div className="catalogue" style={{width:props.pdetails.length*200+20}}>
         {props.pdetails.map(product=>(

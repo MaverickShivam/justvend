@@ -9,7 +9,7 @@ import {Link} from "react-router-dom"
 function Mycategory() {
   return(
     <div className="container">
-        <Link to ={"/snacks"}>
+        <Link to ={"/snacks"} className="mylink">
             <div className="category-box box1">
                 <div className="category-title">Snacks</div>
                 <img className="pic" src={snackspic} alt="Snacks"/>

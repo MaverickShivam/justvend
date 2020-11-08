@@ -47,7 +47,7 @@ class Snacks extends Component
     render()
     {
         return(
-            <div>
+            <div className="snacks">
                 <Mymenu/>
                 <Cheader/>
                 <Wideitems items={this.sample}  />

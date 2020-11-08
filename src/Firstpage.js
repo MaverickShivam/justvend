@@ -49,8 +49,8 @@ class Firstpage extends Component {
 
   render() {
     return (
-      <div>
-        
+      <div className="firstpage">
+
         <Myheader />
         <Mymenu/>
         <Mytopimage/>
