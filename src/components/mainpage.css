@@ -211,9 +211,28 @@ body {
   background-color: transparent;
   color: #6c63ff;
   border: 2px solid #6c63ff;
+  width: 25px;
+  position: relative;
 
   padding: 6px 20px 4px 20px;
 }
+.product-add-btn div {
+  display: inline-block;
+}
+.product-add-btn .minus {
+  position: absolute;
+  left: 5px;
+  top: 0px;
+  font-size: 16px;
+  color: gray;
+}
+.product-add-btn .plus {
+  position: absolute;
+  right: 5px;
+  top: 0;
+  font-size: 16px;
+}
+
 .product-name {
   width: calc(100% - 10px);
   overflow: hidden;
