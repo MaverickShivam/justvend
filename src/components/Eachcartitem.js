@@ -2,7 +2,7 @@ import React,{useContext} from "react"
 import Button from "@material-ui/core/Button";
 import {Itemscontext} from "../Itemscontext"
 
-function Eachitem(props)   
+function Eachcartitem(props)   
 {
     const [items,setItem] =useContext(Itemscontext);
     function getquant()
@@ -39,36 +39,17 @@ function Eachitem(props)
     
   }
     return(
-            <div className="product" >
-                <div className='product-img-container ' style={{"backgroundColor":props.item.pcolor}} >
-                    <img src={props.item.pimage} alt="Snacks" className="product-img" />
+            <div className="cart-product" >
+                <div className='cart-product-img-container ' style={{"backgroundColor":props.item.pcolor}} >
+                    <img src={props.item.pimage} alt="Snacks" className="cart-product-img" />
                 </div>
-                <div className="product-desc">
-                    <div className="product-name">
-                        {props.item.pname}
-                    </div>
-                    <div className="product-desc-left">
-                        <div className="product-quant">
-                            {props.item.pquant}
-                        </div>
-                        <div className="product-price">
-                            ₹{props.item.pprice}
-                        </div>
-
-                    </div>
-                    <div className="product-desc-right">
-                    
-                    {parseInt(getquant())===0 && 
-                        <Button onClick={() => addButton()}  color="primary" style={{"margin":"0","padding":"0"}}>
-                        
-                            <div className="product-add-btn">
-                                Add
-                            </div>
-                        </Button>
-                    }
-                    
-                    {getquant()>0 && 
-                            
+                <div className="cart-product-name">
+                    {props.item.pname}
+                </div>
+                <div className="cart-product-quant">
+                    {props.item.pquant}
+                </div>
+                <div className="cart-product-desc-right"> 
                         <Button  color="primary" style={{"margin":"0","padding":"0"}}>
                         
                             <div className="product-add-btn" style={{"position":"relative"}}>
@@ -83,17 +64,17 @@ function Eachitem(props)
                                 </div>
                                 
                             </div>
-                        </Button>
-                            
-                    }
-                            
+                        </Button> 
                         
-                    </div>
                 </div>
+                <div className="cart-product-price">
+                    ₹{parseInt(props.item.pprice) * getquant()}
+                </div>
+                
             </div>
             );
 
                 
 }  
-export default Eachitem;        
+export default Eachcartitem;        
                 

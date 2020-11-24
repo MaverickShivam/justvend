@@ -2,7 +2,7 @@ import React,{useContext} from "react"
 import Button from "@material-ui/core/Button";
 import {Itemscontext} from "../Itemscontext"
 
-function Eachitem(props)   
+function Eachwideitem(props)   
 {
     const [items,setItem] =useContext(Itemscontext);
     function getquant()
@@ -39,11 +39,11 @@ function Eachitem(props)
     
   }
     return(
-            <div className="product" >
-                <div className='product-img-container ' style={{"backgroundColor":props.item.pcolor}} >
-                    <img src={props.item.pimage} alt="Snacks" className="product-img" />
+            <div className="wide-product" >
+                <div className='wide-product-img-container ' style={{"backgroundColor":props.item.pcolor}} >
+                    <img src={props.item.pimage} alt="Snacks" className="wide-product-img" />
                 </div>
-                <div className="product-desc">
+                <div className="wide-product-desc">
                     <div className="product-name">
                         {props.item.pname}
                     </div>
@@ -95,5 +95,5 @@ function Eachitem(props)
 
                 
 }  
-export default Eachitem;        
+export default Eachwideitem;        
                 

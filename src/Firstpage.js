@@ -2,9 +2,9 @@ import React,{useContext} from "react";
 import "./App.css";
 import { Icon} from '@iconify/react';
 import thumbsUpTwotone from '@iconify/icons-line-md/thumbs-up-twotone';
-import potoffood from "@iconify/icons-emojione-monotone/pot-of-food"
-import eggicon from "@iconify/icons-bi/egg"
-import fruitGrapeOutline from '@iconify/icons-mdi/fruit-grapes-outline'
+import healthy from "@iconify/icons-mdi/food-apple-outline"
+import drinks from "@iconify/icons-mdi/drink-water"
+import snacks from "@iconify/icons-mdi/fast-food"
 import Myheader from "./components/Top-header";
 import Mymenu from "./components/Bottom-menu"
 import Mytopimage from "./components/Top-image"
@@ -36,26 +36,30 @@ function Firstpage()
         <Mymenu/>
         <Mytopimage/>
         <Mycategory/>
+
+
         <div className="top-picks"><Icon icon={thumbsUpTwotone} style={{color: '#6c63ff', fontSize: '20px',verticalAlign:"top",marginRight:"10px"}} />Top picks for you</div>
         <div className="categorydiv">
-          <Myitems pdetails={itemsbytag("top-pick")} key="top-pick"/>
+          <Myitems pdetails={itemsbytag("top-pick")} />
         </div>
 
-         <div className="createyourown">
+        <div className="createyourown">
           <img src={createyourown} alt="Create your own Inventory"/>
         </div>
 
-        <div className="top-picks"><Icon icon={fruitGrapeOutline} style={{color: '#6c63ff', fontSize: '20px',verticalAlign:"top",marginRight:"10px"}} />Fresh Vegetables & Fruits</div>
+         
+
+        <div className="top-picks"><Icon icon={healthy} style={{color: '#6c63ff', fontSize: '20px',verticalAlign:"top",marginRight:"10px"}} />Healthy Items</div>
         <div className="categorydiv">
-          <Myitems pdetails={itemsbytag("veggie")} key="veggie"/>
+          <Myitems pdetails={itemsbytag("healthy")} />
         </div>
-        <div className="top-picks"><Icon icon={eggicon} style={{color: '#6c63ff', fontSize: '20px',verticalAlign:"top",marginRight:"10px"}} />Dairy, Bread & Eggs</div>
+        <div className="top-picks"><Icon icon={snacks} style={{color: '#6c63ff', fontSize: '20px',verticalAlign:"top",marginRight:"10px"}} />Snacks</div>
         <div className="categorydiv">
-          <Myitems pdetails={itemsbytag("dairy")} key="dairy"/>
+          <Myitems pdetails={itemsbytag("snacks")} />
         </div>
-        <div className="top-picks"><Icon icon={potoffood} style={{color: '#6c63ff', fontSize: '20px',verticalAlign:"top",marginRight:"10px"}} />Instant Foods</div>
+        <div className="top-picks"><Icon icon={drinks} style={{color: '#6c63ff', fontSize: '20px',verticalAlign:"top",marginRight:"10px"}} />Beverages</div>
         <div className="categorydiv">
-          <Myitems pdetails={itemsbytag("snacks")} key="snacks"/>
+          <Myitems pdetails={itemsbytag("beverages")}/>
         </div> 
         
         

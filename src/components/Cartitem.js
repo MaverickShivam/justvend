@@ -1,11 +1,11 @@
 import "./mainpage.css";
 import React from "react";
-import Eachwideitem from "./Eachwideitem"
-function Wideitems(props) {
+import Eachcartitem from "./Eachcartitem"
+function Cartitem(props) {
   return(
       <div className="wide-catalogue">
         {props.items.map(product=>(
-            <Eachwideitem item={product} key={product.pid}/>
+            <Eachcartitem item={product} key={product.pid}/>
         ))}
       </div>
       
@@ -14,4 +14,4 @@ function Wideitems(props) {
   );
 
 }
-export default Wideitems;
+export default Cartitem;
