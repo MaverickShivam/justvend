@@ -6,9 +6,11 @@ import Beverages from "./Beverages"
 import Cart from "./Cart"
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
 import {Itemsprovider} from "./Itemscontext"
+import {Locationprovider} from "./Locationcontext"
 function App()
 {
     return (
+      <Locationprovider>
       <Itemsprovider>
       <Router>
         <Route render={({location})=> (
@@ -25,6 +27,7 @@ function App()
         
       </Router>
       </Itemsprovider>
+      </Locationprovider>
     );
   
 }
